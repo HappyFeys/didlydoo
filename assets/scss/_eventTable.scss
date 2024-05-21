@@ -1,0 +1,67 @@
+:root{
+    // variable pour les colors (darkmode)
+    --colorH1:  linear-gradient(100deg, rgba(8,36,79,1) 0%, rgba(125,19,181,1) 57%);
+    --backgroundCard : #f1f3f5;
+    --borderColor : #333;
+    --backgroundTdYes : #28a745;
+    --backgroundTdNo : #dc3545;
+}
+
+main{
+    .event{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .event__table{
+        width: 95%;
+        border: 1px solid var(--borderColor);
+        font-size: 12px;
+        border-radius: 15px;
+        padding: 20px;
+        background-color: var(--backgroundCard);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    table{
+        width: 100%;
+        border-spacing: 5px;
+        text-align: center;
+        tr{
+            td{
+                border-radius: 5px;
+                span{
+                    color: #333;
+                }
+                input{
+                    width: 50px;
+                    border-radius: 5px;
+                    border: none;
+                    border: 1px solid var(--borderColor);
+                }
+                button{
+                    margin: 5px;
+                    border: none;
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 15px;
+                    line-height: 5px;
+                }
+            }
+            .yes{
+                background-color: var(--backgroundTdYes);
+                color: #fff;
+            }
+            .no{
+                background-color: var(--backgroundTdNo);
+                color: #fff;
+            }
+            .td--name{
+                font-weight: bold;
+            }
+            .td--date{
+                font-weight: bold;
+            }
+        }
+    }
+}

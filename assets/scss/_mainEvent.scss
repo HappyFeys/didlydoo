@@ -1,0 +1,44 @@
+:root{
+    // variable pour les colors (darkmode)
+    --colorH1:  linear-gradient(100deg, rgba(8,36,79,1) 0%, rgba(125,19,181,1) 57%);
+    --backgroundCard : #f1f3f5;
+    --borderColor : #333;
+    --backgroundImg : url('/assets/img/background.jpg');
+    --color : #333
+}
+
+main{
+    .main__event{
+        width:95% ;
+        background-image:var(--backgroundImg);
+        background-size: cover;
+        border: 1px solid var(--borderColor);
+        border-radius: 15px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 5px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        color: var(--color);
+        h2{
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        p{
+            text-align: center;
+        }
+    }
+    .main__event::before{
+        content: "";
+    position: absolute;
+    top: -5px; 
+    left: 0;
+    height: 15px; 
+    width: 100%;
+    background: var(--colorH1);
+    }
+}

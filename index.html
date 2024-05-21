@@ -4,16 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Didlydoo</title>
 </head>
 <body>
     <header>
-        <h1>Didlydoo</h1>
-        <button id="header__addEvent">Add an event</button>
-        <input type="checkbox" class="checkbox" checked><!--darkMode-->
+            <h1>Didlydoo</h1>
+            <div>
+                <button id="header__addEvent">Add an event</button>
+                <input type="checkbox" class="checkbox" checked><!--darkMode-->
+            </div>
     </header>
     <main>
-        <form action="" id="form--popup">
+        <form action="" id="form--formulaire">
             <label for="name">Nom de l'évènement</label>
             <input type="text" id="name" placeholder="Nom de l'évènement" maxlength="256">
             <label for="description">Description de l'évènement</label>
@@ -24,44 +30,53 @@
             <input type="date" name="end" id="end">
             <input type="submit" value="soumettre" id="submit">
         </form>
+        <form style="display: none;" id="form--popup">
+            <p>Are you sur ?</p>
+            <button>Yes</button>
+            <button>No</button>
+        </form>
         <!-- Contenu généré en JS-->
-        <div class="main__event">
-            <h2>Nom de l'event</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, corporis voluptatibus qui tenetur fugiat maxime.</p>
-        </div>   
-        <div class="event__table">
-            <table>
-                <tr class="event__table--date">
-                    <td>/</td>
-                    <td>21/05/24</td>
-                    <td>22/05/24</td>
-                    <td>23/05/24</td>
-                </tr>
-                <tr class="event__table--person">
-                    <td>Tom</td>
-                    <td>vert</td>
-                    <td>vert</td>
-                    <td>rouge</td>
-                </tr>
-                <tr class="event__table--person">
-                    <td>Adrien</td>
-                    <td>rouge</td>
-                    <td>rouge</td>
-                    <td>rouge</td>
-                </tr>
-                <tr class="event__table--person">
-                    <td>Dylan</td>
-                    <td>vert</td>
-                    <td>vert</td>
-                    <td>vert</td>
-                </tr>
-                <tr class="event__table--add">
-                    <td><input type="text" id="table--addName"></td>
-                    <td><button>V</button><button>X</button></td>
-                    <td><button>V</button><button>X</button></td>
-                    <td><button>V</button><button>X</button></td>
-                </tr>
-            </table>
+
+
+        <div class="event">
+            <div class="main__event">
+                <h2>Nom de l'event</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, corporis voluptatibus qui tenetur fugiat maxime.</p>
+            </div>   
+            <div class="event__table">
+                <table>
+                    <tr class="event__table--date">
+                        <td></td>
+                        <td class="td--date">Tue 21</td>
+                        <td class="td--date">Wed 22</td>
+                        <td class="td--date">Thu 23</td>
+                    </tr>
+                    <tr class="event__table--person">
+                        <td class="td--name">Tom</td>
+                        <td class="yes"></td>
+                        <td class="yes"></td>
+                        <td class="no"></td>
+                    </tr>
+                    <tr class="event__table--person">
+                        <td class="td--name">Adrien</td>
+                        <td class="no"></td>
+                        <td class="no"></td>
+                        <td class="no"></td>
+                    </tr>
+                    <tr class="event__table--person">
+                        <td class="td--name">Dylan</td>
+                        <td class="yes"></td>
+                        <td class="yes"></td>
+                        <td class="yes"></td>
+                    </tr>
+                    <tr class="event__table--add">
+                        <td><input type="text" id="table--addName"></td>
+                        <td><button class="yes"><span class="material-symbols-outlined">check</span></button><button class="no"><span class="material-symbols-outlined">close</span></button></td>
+                        <td><button class="yes"><span class="material-symbols-outlined">check</span></button><button class="no"><span class="material-symbols-outlined">close</span></button></td>
+                        <td><button class="yes"><span class="material-symbols-outlined">check</span></button><button class="no"><span class="material-symbols-outlined">close</span></button></td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </main>
     <footer>
@@ -75,5 +90,7 @@
     </footer>
 
     <script type="module" src="assets/js/main.js"></script>
+    <script type="module" src="assets/js/event.js"></script>
+    <script type="module" src="assets/js/darkmode.js"></script>
 </body>
 </html>
