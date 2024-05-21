@@ -13,39 +13,66 @@
         <input type="checkbox" class="checkbox" checked><!--darkMode-->
     </header>
     <main>
+        <form action="" id="form--popup">
+            <label for="name">Nom de l'évènement</label>
+            <input type="text" id="name" placeholder="Nom de l'évènement" maxlength="256">
+            <label for="description">Description de l'évènement</label>
+            <input type="text" id="description" maxlength="256" placeholder="Description de l'évènement">
+            <label for="start">Date de début :</label>
+            <input type="date" name="start" id="start">
+            <label for="end">Date de fin :</label>
+            <input type="date" name="end" id="end">
+            <input type="submit" value="soumettre" id="submit">
+        </form>
         <!-- Contenu généré en JS-->
-        <!-- Structure voulue
-        div .main__event
-            div .event__description
-                h2 nom de l'event
-                p description de l'event
-            div .event__table
-                table
-                    tr (ligne des dates)
-                        td (vide)
-                        td (généré x td en fonction de nombre de date)
-                    tr (une personne s'ajoute)
-                        td (nom)
-                        td (géné x td en fonction de nombre de date dispo) -->
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Event Name</th>
-                                    <th>Description</th>
-                                    <th>Author</th>
-                                    <th>Availability</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                            </tbody>
-                        </table>
-                   
-                
-
+        <div class="main__event">
+            <h2>Nom de l'event</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, corporis voluptatibus qui tenetur fugiat maxime.</p>
+        </div>   
+        <div class="event__table">
+            <table>
+                <tr class="event__table--date">
+                    <td>/</td>
+                    <td>21/05/24</td>
+                    <td>22/05/24</td>
+                    <td>23/05/24</td>
+                </tr>
+                <tr class="event__table--person">
+                    <td>Tom</td>
+                    <td>vert</td>
+                    <td>vert</td>
+                    <td>rouge</td>
+                </tr>
+                <tr class="event__table--person">
+                    <td>Adrien</td>
+                    <td>rouge</td>
+                    <td>rouge</td>
+                    <td>rouge</td>
+                </tr>
+                <tr class="event__table--person">
+                    <td>Dylan</td>
+                    <td>vert</td>
+                    <td>vert</td>
+                    <td>vert</td>
+                </tr>
+                <tr class="event__table--add">
+                    <td><input type="text" id="table--addName"></td>
+                    <td><button>V</button><button>X</button></td>
+                    <td><button>V</button><button>X</button></td>
+                    <td><button>V</button><button>X</button></td>
+                </tr>
+            </table>
+        </div>
     </main>
-
+    <footer>
+        <p>Collaborators</p>
+        <ul>
+            <li>Tom</li>
+            <li>Dylan</li>
+            <li>Adrien B.</li>
+        </ul>
+        <p>Copyright© bestTeamBeCode , all right reserved</p>
+    </footer>
 
     <script type="module" src="assets/js/main.js"></script>
 </body>
