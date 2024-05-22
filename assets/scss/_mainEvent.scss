@@ -8,8 +8,12 @@
 }
 
 main{
+    width: 100%;
+    .event{
+        width: 100%;
+    }
     .main__event{
-        width:95% ;
+        width:95%;
         background-image:var(--backgroundImg);
         background-size: cover;
         border: 1px solid var(--borderColor);
