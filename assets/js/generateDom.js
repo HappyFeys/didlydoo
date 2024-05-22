@@ -18,7 +18,7 @@ btnSubmit.addEventListener("click", ()=>{
         jours.push( date.getDate() + '/' + ((date.getMonth() + 1)<10? "0"+(date.getMonth() + 1): (date.getMonth() + 1)));
     };
     datesEveryDay(dateDebut,dateFin,iteration)
-    const event = {
+    let event = {
         id: generateID(),
         name : nameEvent.value,
         description : descriptionEvent.value,
@@ -29,31 +29,7 @@ btnSubmit.addEventListener("click", ()=>{
         // last_modification : new Date.now() // récupérer la date de modif et la stocker la
     }
     Set("event", event)
-    createDiv(main, "event")
-    const eventSection = document.querySelector(".event")
-    createDiv(eventSection, "main__event")
-    const mainEvent = document.querySelector(".main__event")
-    generateElement("h2",event.name,mainEvent)
-    generateElement("p", event.description, mainEvent)
-    generateElement("p", event.author,mainEvent,"author")
-    createDiv(eventSection, "event__table")
-    const eventTable = document.querySelector(".event__table")
-    generateTable(eventTable)
-    const table= document.querySelector("table") //possible bug ici lorsque je crée plusieurs évent en même temps
-    generateTr(table, "event__table--date");
-    const eventTableDate = document.querySelector(".event__table--date")
-    generateTdNoContent(eventTableDate)
-    
-    console.log(jours);
-    for (const element of jours) {
-        generateTd(element, eventTableDate, "td--date")
-    }
-    generateTr(table,"event__table--add")
-    const eventTableAdd = document.querySelector(".event__table--add")
-    generateTdinput(eventTableAdd,"text", "table--addName")
-    for (const element of jours) {
-        generateTdinput(eventTableAdd,"checkbox", "isHere")
-    }
+   generateDom(event)
 })
 
 
@@ -125,3 +101,34 @@ function datesEveryDay(start, end, f) {
     return result;
 }
 
+export function generateDom(event) {
+    createDiv(main, "event")
+    const eventSection = document.querySelector(".event")
+    createDiv(eventSection, "main__event")
+    const mainEvent = document.querySelector(".main__event")
+    generateElement("h2",event.name,mainEvent)
+    generateElement("p", event.description, mainEvent)
+    generateElement("p", event.author,mainEvent,"author")
+    createDiv(eventSection, "event__table")
+    const eventTable = document.querySelector(".event__table")
+    generateTable(eventTable)
+    const table= document.querySelector("table") //possible bug ici lorsque je crée plusieurs évent en même temps
+    generateTr(table, "event__table--date");
+    const eventTableDate = document.querySelector(".event__table--date")
+    generateTdNoContent(eventTableDate)
+    console.log(event.jours);
+    for (const element of event.dates) {
+        generateTd(element, eventTableDate, "td--date")
+    }
+    generateTr(table,"event__table--add")
+    const eventTableAdd = document.querySelector(".event__table--add")
+    generateTdinput(eventTableAdd,"text", "table--addName")
+    for (const element of event.dates) {
+        generateTdinput(eventTableAdd,"checkbox", "isHere")
+    }
+    generateTr(table,"addPerson")
+    const TrAddPerson = document.querySelector(".addPerson")
+    generateTdNoContent(TrAddPerson, "tdBtn")
+    const tdBtn = document.querySelector(".tdBtn")
+    generateElement("button", "OK", tdBtn, "btnAddPerson")
+}
