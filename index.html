@@ -7,18 +7,21 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Didlydoo</title>
 </head>
 
 <body>
     <header>
-            <h1>Didlydoo</h1>
-            <div>
-                <button id="header__addEvent">Add an event</button>
-                <input type="checkbox" class="checkbox" checked><!--darkMode-->
-            </div>
+        <h1>Didlydoo</h1>
+        <div>
+            <button id="header__addEvent">Add an event</button>
+            <input type="checkbox" class="checkbox" checked><!--darkMode-->
+        </div>
     </header>
     <main>
 
@@ -31,16 +34,18 @@
             <input type="date" name="start" id="start">
             <label for="end">Date de fin :</label>
             <input type="date" name="end" id="end">
+            <label for="author">Auteur de l'évènement</label>
+            <input type="text" id="author" placeholder="L'auteur de l'évènement">
             <button id="submit">Soumettre</button>
         </form>
-        <form style="display: none;" id="form--popup">
+        <form id="form--popup">
             <p>Are you sur ?</p>
-            <button>Yes</button>
-            <button>No</button>
+            <button id="form--popup--yes">Yes</button>
+            <button id="form--popup--no">No</button>
         </form>
         <!-- Contenu généré en JS-->
 
-        <div class="event">
+        <!-- <div class="event">
             <div class="main__event">
                 <h2>Nom de l'event</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, corporis voluptatibus qui tenetur fugiat maxime.</p>
@@ -72,21 +77,20 @@
                         <td class="yes"></td>
                     </tr>
                     <tr class="event__table--add">
-                        <td><input type="text" id="table--addName"></td>
+                        <td><input type="text" class="table--addName"></td>
                         <td><input type="checkbox" name="isHere" class="isHere"></td>
                         <td><input type="checkbox" name="isHere" class="isHere"></td>
                         <td><input type="checkbox" name="isHere" class="isHere"></td>
                     </tr>
                 </table>
             </div>
-        </div>
+        </div> -->
     </main>
     <footer>
         <p>Collaborators</p>
         <ul>
             <li>Tom</li>
             <li>Dylan</li>
-            <li>Adrien B.</li>
         </ul>
         <p>Copyright© bestTeamBeCode , all right reserved</p>
     </footer>
@@ -94,6 +98,7 @@
     <script type="module" src="assets/js/main.js"></script>
     <script type="module" src="assets/js/event.js"></script>
     <script type="module" src="assets/js/darkmode.js"></script>
+    <script type="module" src="assets/js/generateDom.js"></script>
 </body>
 
 </html>
