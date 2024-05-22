@@ -45,7 +45,7 @@ function displayEvent(event) {
     generateDom(event);
 }
 
-// Charger et afficher l'événement depuis le Local Storage lors du chargement de la page
+
 window.addEventListener('load', () => {
     const storedEvent = Get("event");
     if (storedEvent) {
