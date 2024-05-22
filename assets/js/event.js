@@ -2,7 +2,7 @@ document.getElementById("header__addEvent").addEventListener("click", function()
 
   const form = document.getElementById("form--formulaire")
 
-  form.style.display = "block"
+  form.style.display = "flex"
 
 })
 
@@ -11,6 +11,6 @@ document.getElementById("submit").addEventListener("click", function(){
 
   const popup = document.getElementById("form--popup")
 
-  popup.style.display = "block"
+  popup.style.display = "flex"
 
 })

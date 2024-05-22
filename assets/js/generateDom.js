@@ -39,20 +39,20 @@ function generateTable(section, className) {
     section.appendChild(table)
 }
 
-function generateTr(section, className) {
+export function generateTr(section, className) {
     const tr = document.createElement("tr")
     if(className) tr.classList.add(className)
     section.appendChild(tr)
 }
 
-function generateTd(content, section, className) {
+export function generateTd(content, section, className) {
     const td = document.createElement("td")
     td.innerText = content
     if(className) td.classList.add(className)
     section.appendChild(td)
 }
 
-function generateTdNoContent(section, className) {
+export function generateTdNoContent(section, className) {
     const td = document.createElement("td")
     if(className) td.classList.add(className)
     section.appendChild(td)
@@ -112,7 +112,7 @@ export function generateDom(event) {
     createDiv(eventSection, "event__table")
     const eventTable = document.querySelector(".event__table")
     generateTable(eventTable)
-    const table= document.querySelector("table") //possible bug ici lorsque je crée plusieurs évent en même temps
+    const table= document.querySelector("table")
     generateTr(table, "event__table--date");
     const eventTableDate = document.querySelector(".event__table--date")
     generateTdNoContent(eventTableDate)

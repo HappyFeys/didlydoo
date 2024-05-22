@@ -23,65 +23,26 @@
     <main>
 
         <form action="" id="form--formulaire">
-            <label for="name">Nom de l'évènement</label>
+            <label for="name"><span>Nom</span> de l'évènement :</label>
             <input type="text" id="name" placeholder="Nom de l'évènement" maxlength="256">
-            <label for="description">Description de l'évènement</label>
+            <label for="description"><span>Description</span> de l'évènement :</label>
             <input type="text" id="description" maxlength="256" placeholder="Description de l'évènement">
-            <label for="start">Date de début :</label>
+            <label for="start">Date de <span>début</span> :</label>
             <input type="date" name="start" id="start">
-            <label for="end">Date de fin :</label>
+            <label for="end">Date de <span>fin</span> :</label>
             <input type="date" name="end" id="end">
-            <label for="author">Auteur de l'évènement</label>
+            <label for="author"><span>Auteur</span> de l'évènement :</label>
             <input type="text" id="author" placeholder="L'auteur de l'évènement">
             <button id="submit">Soumettre</button>
         </form>
         <form style="display: none;" id="form--popup">
             <p>Are you sur ?</p>
-            <button id="form--popup--yes">Yes</button>
-            <button id="form--popup--no">No</button>
+            <div>
+                <button id="form--popup--yes">Yes</button>
+                <button id="form--popup--no">No</button>
+            </div>
         </form>
         <!-- Contenu généré en JS-->
-
-        <!-- <div class="event">
-            <div class="main__event">
-                <h2>Nom de l'event</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, corporis voluptatibus qui tenetur fugiat maxime.</p>
-            </div>   
-            <div class="event__table">
-                <table>
-                    <tr class="event__table--date">
-                        <td></td>
-                        <td class="td--date">Tue 21</td>
-                        <td class="td--date">Wed 22</td>
-                        <td class="td--date">Thu 23</td>
-                    </tr>
-                    <tr class="event__table--person">
-                        <td class="td--name">Tom</td>
-                        <td class="yes"></td>
-                        <td class="yes"></td>
-                        <td class="no"></td>
-                    </tr>
-                    <tr class="event__table--person">
-                        <td class="td--name">Adrien</td>
-                        <td class="no"></td>
-                        <td class="no"></td>
-                        <td class="no"></td>
-                    </tr>
-                    <tr class="event__table--person">
-                        <td class="td--name">Dylan</td>
-                        <td class="yes"></td>
-                        <td class="yes"></td>
-                        <td class="yes"></td>
-                    </tr>
-                    <tr class="event__table--add">
-                        <td><input type="text" class="table--addName"></td>
-                        <td><input type="checkbox" name="isHere" class="isHere"></td>
-                        <td><input type="checkbox" name="isHere" class="isHere"></td>
-                        <td><input type="checkbox" name="isHere" class="isHere"></td>
-                    </tr>
-                </table>
-            </div>
-        </div> -->
     </main>
     <footer>
         <p>Collaborators</p>
@@ -96,6 +57,7 @@
     <script type="module" src="assets/js/event.js"></script>
     <script type="module" src="assets/js/darkmode.js"></script>
     <script type="module" src="assets/js/generateDom.js"></script>
+    <script type="module" src="assets/js/generateAttendees.js"></script>
 </body>
 
 </html>
