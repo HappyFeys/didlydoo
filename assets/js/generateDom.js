@@ -1,6 +1,7 @@
 import { generateElement, createDiv, resetHTML } from "./generateElement.js";
 import { Get, Set } from "./LocalStorage.js";
-import { postEvent } from "./api.js";
+import { postEvent } from "./postEvent.js";
+import { getEvents } from "./getEvent.js";
 
 const nameEvent = document.querySelector("#name");
 const descriptionEvent = document.querySelector("#description");
@@ -10,20 +11,23 @@ const btnSubmit = document.querySelector("#submit");
 const btnConfirm = document.querySelector("#form--popup--yes")
 const main = document.querySelector("main")
 const btnAddDate = document.querySelector("#btnAddDate")
-const divtoggle= document.querySelector("#form--formulaire")
+const divtoggle = document.querySelector("#form--formulaire")
 const headerAddEvent = document.querySelector("#header__addEvent")
 
 let jours = []
 
-btnAddDate.addEventListener("click", ()=>{
+btnAddDate.addEventListener("click", () => {
     let date = new Date(dateEvent.value)
     let dateIso = date.toISOString()
     jours.push(dateIso)
-    dateEvent.value=""
+    let today = new Date()
+    let m = today.getMonth()+1
+    let d = today.getDate()
+    dateEvent.value = today.getFullYear() + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d);
     console.log(jours);
 })
 
-headerAddEvent.addEventListener("click", ()=>{
+headerAddEvent.addEventListener("click", () => {
     const computedStyle = window.getComputedStyle(divtoggle);
     const displayStyle = computedStyle.getPropertyValue('display');
     if (displayStyle === "none") {
@@ -33,42 +37,60 @@ headerAddEvent.addEventListener("click", ()=>{
     }
 })
 
-
-btnSubmit.addEventListener("click", ()=>{
-    
-    const computedStyle = window.getComputedStyle(divtoggle);
-    const displayStyle = computedStyle.getPropertyValue('display');
-    if (displayStyle === "none") {
-        divtoggle.style.display = "flex";
-    } else {
-        divtoggle.style.display = "none";
+btnSubmit.addEventListener("click", async ()=>{
+    if (nameEvent.value.length > 256 || descriptionEvent.value.length > 256 || author.value.length > 256) {
+        alert("Les champs doivent contenir moins de 256 caractères.");
+        return;
     }
 
-    let event = {
-        name : nameEvent.value,
-        description : descriptionEvent.value,
-        dates : jours,
-        author : author.value,
-    }
-//    postEvent(event.name, event.dates, event.author, event.description)
-    Set("event", event)
-   generateDom(event)
-   jours=[]
-   console.log(jours);
-   console.log(event);
-})
+    let eventDetails = {
+        name: nameEvent.value,
+        description: descriptionEvent.value,
+        dates: jours,
+        author: author.value,
+    };
+    console.log(eventDetails.dates);
 
+    try {
+        const responseData = await postEvent(eventDetails.name, eventDetails.dates, eventDetails.author, eventDetails.description);
+        console.log('Event successfully posted:', responseData);
+        nameEvent.value = "";
+        descriptionEvent.value = "";
+        author.value = "";
+        jours = [];
+        
+       
+        generateDom(eventDetails);
+
+    } catch (error) {
+        console.error('Failed to post event:', error);
+        alert("Une erreur s'est produite lors de la création de l'événement.");
+    }
+});
+      
+        
+
+window.addEventListener('load', async () => {
+    try {
+        const events = await getEvents();
+        if (events && events.length > 0) {
+            events.forEach(event => generateDom(event));
+        }
+    } catch (error) {
+        console.error('Failed to load events:', error);
+    }
+});
 
 function generateTable(section, className) {
     const table = document.createElement("table")
-    if(className) table.classList.add(className)
+    if (className) table.classList.add(className)
     section.appendChild(table)
     return table
 }
 
 export function generateTr(section, className) {
     const tr = document.createElement("tr")
-    if(className) tr.classList.add(className)
+    if (className) tr.classList.add(className)
     section.appendChild(tr)
     return tr
 }
@@ -76,14 +98,14 @@ export function generateTr(section, className) {
 export function generateTd(content, section, className) {
     const td = document.createElement("td")
     td.innerText = content
-    if(className) td.classList.add(className)
+    if (className) td.classList.add(className)
     section.appendChild(td)
     return td
 }
 
 export function generateTdNoContent(section, className) {
     const td = document.createElement("td")
-    if(className) td.classList.add(className)
+    if (className) td.classList.add(className)
     section.appendChild(td)
 return td
 }
@@ -98,25 +120,8 @@ function generateTdinput(parent, type, className) {
     td.appendChild(input);
     parent.appendChild(td);
     return input
+
 }
-
-
-
-function datesEveryDay(start, end, f) {
-    f = f || function(g) {
-      return g;
-    };
-    let startDate = new Date(start),
-        endDate = end ? new Date(end) : new Date(),
-        timeStampStart = startDate.getTime(),
-        timeStampEnd = endDate.getTime(),
-        c = timeStampStart > timeStampEnd ? endDate : startDate,
-        d = timeStampEnd > timeStampEnd ? timeStampStart : timeStampEnd;
-    do {
-      f(new Date(c));
-      c.setDate(c.getDate() + 1);
-    } while (d >= c.getTime());
-  }
 
 
 export function generateDom(event) {
@@ -140,12 +145,13 @@ export function generateDom(event) {
     
     const eventTableDate = generateTr(table, "event__table--date");
     generateTdNoContent(eventTableDate);
+
     for (const element of event.dates) {
-        let newDate = new Date(element);
+        let newDate = new Date(element.date);
         let newDateFormat = (newDate.getDate() < 10 ? "0" + newDate.getDate() : newDate.getDate()) + "/" + ((newDate.getMonth() + 1) < 10 ? "0" + (newDate.getMonth() + 1) : (newDate.getMonth() + 1));
         generateTd(newDateFormat, eventTableDate, "td--date");
     }
-    
+
     const eventTableAdd = generateTr(table, "event__table--add");
     const addNameInput = generateTdinput(eventTableAdd, "text", "table--addName");
     const isHereCheckboxes = [];
@@ -179,5 +185,4 @@ export function generateDom(event) {
             element.checked= false
         }
     });
-
 }

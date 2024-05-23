@@ -33,14 +33,4 @@ export async function postEvent (eventName, dateTab , author , description){
   }catch (error) {
 
   }
-
-
-  
-
-
 }
-
-
-
-
-
