@@ -262,7 +262,7 @@ footer ul li {
 #form--formulaire label span {
   font-weight: bold;
 }
-#form--formulaire #submit {
+#form--formulaire #submit, #form--formulaire #btnAddDate {
   align-self: center;
   margin-top: 5px;
   padding: 5px;

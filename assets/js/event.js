@@ -1,16 +1,16 @@
-document.getElementById("header__addEvent").addEventListener("click", function(){
+// document.getElementById("header__addEvent").addEventListener("click", function(){
 
-  const form = document.getElementById("form--formulaire")
+//   const form = document.getElementById("form--formulaire")
 
-  form.style.display = "flex"
+//   form.style.display = "flex"
 
-})
+// })
 
-document.getElementById("submit").addEventListener("click", function(){
-  event.preventDefault();
+// document.getElementById("submit").addEventListener("click", function(){
+//   event.preventDefault();
 
-  const popup = document.getElementById("form--popup")
+//   const popup = document.getElementById("form--popup")
 
-  popup.style.display = "flex"
+//   popup.style.display = "flex"
 
-})
+// })

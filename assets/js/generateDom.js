@@ -10,6 +10,8 @@ const btnSubmit = document.querySelector("#submit");
 const btnConfirm = document.querySelector("#form--popup--yes")
 const main = document.querySelector("main")
 const btnAddDate = document.querySelector("#btnAddDate")
+const divtoggle= document.querySelector("#form--formulaire")
+const headerAddEvent = document.querySelector("#header__addEvent")
 
 let jours = []
 
@@ -21,6 +23,15 @@ btnAddDate.addEventListener("click", ()=>{
     console.log(jours);
 })
 
+headerAddEvent.addEventListener("click", ()=>{
+    const computedStyle = window.getComputedStyle(divtoggle);
+    const displayStyle = computedStyle.getPropertyValue('display');
+    if (displayStyle === "none") {
+        divtoggle.style.display = "flex";
+    } else {
+        divtoggle.style.display = "none";
+    }
+})
 
 
 btnSubmit.addEventListener("click", ()=>{
@@ -31,13 +42,22 @@ btnSubmit.addEventListener("click", ()=>{
     //     jours.push( date.getFullYear() + '-' + ((date.getMonth() + 1)<10? "0"+(date.getMonth() + 1): (date.getMonth() + 1))+ "-"+ (date.getDate()? "0"+date.getDate() : date.getDate()));
     // };
     // datesEveryDay(dateDebut,dateFin,iteration)
+
+    const computedStyle = window.getComputedStyle(divtoggle);
+    const displayStyle = computedStyle.getPropertyValue('display');
+    if (displayStyle === "none") {
+        divtoggle.style.display = "flex";
+    } else {
+        divtoggle.style.display = "none";
+    }
+
     let event = {
         name : nameEvent.value,
         description : descriptionEvent.value,
         dates : jours,
         author : author.value,
     }
-   postEvent(event.name, event.dates, event.author, event.description)
+//    postEvent(event.name, event.dates, event.author, event.description)
    generateDom(event)
 })
 
