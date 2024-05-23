@@ -11,3 +11,23 @@ event.forEach(events => {
         });
     }
 })
+
+export async function deleteEvent(id) {
+    const url = `http://localhost:3000/api/events/${id}/`
+
+    const options = {
+        method : `DELETE`,
+        headers: {
+            'Content-Type': `application/json`
+        },
+        body: body
+    }
+
+    try {
+        const response = await fetch(url, options)
+        const responseData = await response.json()
+        console.log(`Event Deleted`, responseData);
+    } catch (error) {
+        
+    }
+}
