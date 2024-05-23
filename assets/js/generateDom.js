@@ -1,34 +1,43 @@
 import { generateElement, createDiv, resetHTML } from "./generateElement.js";
 import { Get, Set } from "./LocalStorage.js";
+import { postEvent } from "./api.js";
 
 const nameEvent = document.querySelector("#name");
 const descriptionEvent = document.querySelector("#description");
-const startEvent = document.querySelector("#start");
-const endEvent = document.querySelector("#end");
+const dateEvent = document.querySelector("#date");
 const author = document.querySelector("#author")
 const btnSubmit = document.querySelector("#submit");
 const btnConfirm = document.querySelector("#form--popup--yes")
 const main = document.querySelector("main")
+const btnAddDate = document.querySelector("#btnAddDate")
+
+let jours = []
+
+btnAddDate.addEventListener("click", ()=>{
+    let date = new Date(dateEvent.value)
+    let dateIso = date.toISOString()
+    jours.push(dateIso)
+    dateEvent.value=""
+    console.log(jours);
+})
+
+
 
 btnSubmit.addEventListener("click", ()=>{
-    let dateDebut = new Date(startEvent.value)
-    let dateFin = new Date(endEvent.value)
-    let jours = []
-    let iteration = function(date) {
-        jours.push( date.getDate() + '/' + ((date.getMonth() + 1)<10? "0"+(date.getMonth() + 1): (date.getMonth() + 1)));
-    };
-    datesEveryDay(dateDebut,dateFin,iteration)
+    // let dateDebut = new Date(startEvent.value)
+    // let dateFin = new Date(endEvent.value)
+    
+    // let iteration = function(date) {
+    //     jours.push( date.getFullYear() + '-' + ((date.getMonth() + 1)<10? "0"+(date.getMonth() + 1): (date.getMonth() + 1))+ "-"+ (date.getDate()? "0"+date.getDate() : date.getDate()));
+    // };
+    // datesEveryDay(dateDebut,dateFin,iteration)
     let event = {
-        id: generateID(),
         name : nameEvent.value,
         description : descriptionEvent.value,
         dates : jours,
         author : author.value,
-        // created_at : new Date.now(),
-        // num_modification : 0, // faire un systeme de count
-        // last_modification : new Date.now() // récupérer la date de modif et la stocker la
     }
-    Set("event", event)
+   postEvent(event.name, event.dates, event.author, event.description)
    generateDom(event)
 })
 
@@ -85,21 +94,6 @@ function datesEveryDay(start, end, f) {
     } while (d >= c.getTime());
   }
 
-
-  function generateID() {
-    const length = 12;
-    
-    const characters = '0123456789abcdef';
-    
-    let result = '';
-    
-    for (let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * characters.length);
-        result += characters[randomIndex];
-    }
-    
-    return result;
-}
 
 export function generateDom(event) {
     createDiv(main, "event")

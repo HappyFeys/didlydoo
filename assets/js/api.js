@@ -1,6 +1,6 @@
 export async function postEvent (eventName, dateTab , author , description){
 
-  const url = "http://localhost:3000/"
+  const url = "http://localhost:3000/api/events/"
 
   let data = {
     name: eventName,
