@@ -130,6 +130,7 @@ main .main__event {
   position: relative;
   overflow: hidden;
   margin-bottom: 5px;
+  margin-top: 20px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   color: var(--color);
 }
@@ -139,6 +140,15 @@ main .main__event h2 {
 }
 main .main__event p {
   text-align: center;
+}
+main .main__event .author {
+  font-size: 14px;
+  font-weight: 300;
+}
+main .main__event .material-symbols-outlined {
+  position: absolute;
+  right: 5%;
+  top: 15%;
 }
 main .main__event::before {
   content: "";
@@ -213,6 +223,9 @@ main table tr .td--date {
 }
 main table .btnAddPerson {
   background-color: rgba(124, 19, 181, 0.593);
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
 }
 
 :root {
@@ -265,10 +278,16 @@ footer ul li {
 #form--formulaire #submit, #form--formulaire #btnAddDate {
   align-self: center;
   margin-top: 5px;
-  padding: 5px;
+  padding: 7px;
   border-radius: 20px;
   border: 1px solid #333;
   background-color: rgba(124, 19, 181, 0.593);
+}
+#form--formulaire input {
+  text-indent: 5px;
+  padding: 2px;
+  border-radius: 5px;
+  border: 1px solid #333;
 }
 
 #form--popup {
@@ -295,6 +314,7 @@ footer ul li {
 }
 
 *, ::after, ::before {
+  font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -308,7 +328,6 @@ body {
   flex-direction: column;
   width: 100%;
   background-color: var(--background);
-  font-family: "Roboto", sans-serif;
 }
 
 :root {

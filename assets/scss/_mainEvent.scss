@@ -26,6 +26,7 @@ main{
         position: relative;
         overflow: hidden;
         margin-bottom: 5px;
+        margin-top: 20px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         color: var(--color);
         h2{
@@ -34,6 +35,15 @@ main{
         }
         p{
             text-align: center;
+        }
+        .author{
+            font-size: 14px;
+            font-weight: 300;
+        }
+        .material-symbols-outlined{
+            position: absolute;
+            right: 5%;
+            top: 15%;
         }
     }
     .main__event::before{

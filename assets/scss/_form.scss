@@ -26,10 +26,16 @@
     #submit, #btnAddDate{
         align-self: center;
         margin-top: 5px;
-        padding: 5px;
+        padding: 7px;
         border-radius: 20px;
         border: 1px solid #333;
         background-color: rgba(124, 19, 181, 0.593);
+    }
+    input{
+        text-indent: 5px;
+        padding: 2px;
+        border-radius: 5px;
+        border: 1px solid #333;
     }
 }
 

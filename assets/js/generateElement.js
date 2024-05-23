@@ -9,6 +9,7 @@ export function generateElement(tag, content, section, className) {
     element.innerText = content;
     if(className) element.classList.add(className);
     section.appendChild(element)
+    return element
 }
 
 /**
@@ -21,6 +22,7 @@ export function createDiv(section, className){
     let div = document.createElement("div")
     if(className) div.classList.add(className)
     section.appendChild(div)
+    return div;
 }
 
 /**
