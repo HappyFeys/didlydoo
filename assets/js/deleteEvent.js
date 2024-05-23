@@ -1,33 +1,24 @@
-import { resetHTML } from "./generateElement.js";
 
-const event = document.querySelectorAll(".event")
-
-event.forEach(events => {
-    const btnDelete = events.querySelectorAll(".material-symbols-outlined");
-    for (const element of btnDelete) {
-        element.addEventListener("click", () => {
-            events.remove();
-            
-        });
-    }
-})
-
-export async function deleteEvent(id) {
-    const url = `http://localhost:3000/api/events/${id}/`
+export async function deleteEvents(id) {
+    const url = `http://localhost:3000/api/events/${id}/`;
 
     const options = {
-        method : `DELETE`,
+        method: 'DELETE',
         headers: {
-            'Content-Type': `application/json`
-        },
-        body: body
-    }
+            'Content-Type': 'application/json'
+        }
+    };
 
     try {
-        const response = await fetch(url, options)
-        const responseData = await response.json()
-        console.log(`Event Deleted`, responseData);
+        const response = await fetch(url, options);
+
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} ${response.statusText}`);
+        }
+
+        const responseData = await response.json();
+        console.log('Event Deleted', responseData);
     } catch (error) {
-        
+        console.error('Failed to delete the event:', error);
     }
 }

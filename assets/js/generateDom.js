@@ -2,6 +2,7 @@ import { generateElement, createDiv, resetHTML } from "./generateElement.js";
 import { Get, Set } from "./LocalStorage.js";
 import { postEvent } from "./postEvent.js";
 import { getEvents } from "./getEvent.js";
+import { deleteEvents } from "./deleteEvent.js";
 
 const nameEvent = document.querySelector("#name");
 const descriptionEvent = document.querySelector("#description");
@@ -136,8 +137,8 @@ export function generateDom(event) {
     const deleteBtn = generateElement("span", "delete", mainEvent, "material-symbols-outlined");
 
     deleteBtn.addEventListener("click", () => {
-        console.log("j'ai bien clic sur supprimé");
         eventSection.remove();
+        deleteEvents(event.id);
     });
     
     const eventTableSection = createDiv(eventSection, "event__table");
