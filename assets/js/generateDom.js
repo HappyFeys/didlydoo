@@ -1,6 +1,7 @@
 import { generateElement, createDiv, resetHTML } from "./generateElement.js";
 import { Get, Set } from "./LocalStorage.js";
-import { postEvent } from "./api.js";
+import { postEvent } from "./postEvent.js";
+import { getEvents } from "./getEvent.js";
 
 const nameEvent = document.querySelector("#name");
 const descriptionEvent = document.querySelector("#description");
@@ -34,9 +35,9 @@ headerAddEvent.addEventListener("click", () => {
 })
 
 btnSubmit.addEventListener("click", async (event) => {
-    event.preventDefault(); // Empêche la soumission par défaut du formulaire
+    event.preventDefault(); 
 
-    // Validation des champs
+  
     if (nameEvent.value.length > 256 || descriptionEvent.value.length > 256 || author.value.length > 256) {
         alert("Les champs doivent contenir moins de 256 caractères.");
         return;
@@ -53,19 +54,19 @@ btnSubmit.addEventListener("click", async (event) => {
         const responseData = await postEvent(eventDetails.name, eventDetails.dates, eventDetails.author, eventDetails.description);
         console.log('Event successfully posted:', responseData);
 
-        // Cache le formulaire après la soumission réussie
+ 
         divtoggle.style.display = "none";
 
-        // Réinitialise les champs du formulaire
+      
         nameEvent.value = "";
         descriptionEvent.value = "";
         author.value = "";
         jours = [];
         
-        // Appelle la fonction pour générer le DOM avec l'événement créé
+       
         generateDom(eventDetails);
 
-        // Enregistre l'événement dans le local storage
+     
         Set("event", eventDetails);
 
     } catch (error) {
@@ -74,10 +75,14 @@ btnSubmit.addEventListener("click", async (event) => {
     }
 });
 
-window.addEventListener('load', () => {
-    const storedEvent = Get("event");
-    if (storedEvent) {
-        generateDom(storedEvent);
+window.addEventListener('load', async () => {
+    try {
+        const events = await getEvents();
+        if (events && events.length > 0) {
+            events.forEach(event => generateDom(event));
+        }
+    } catch (error) {
+        console.error('Failed to load events:', error);
     }
 });
 
