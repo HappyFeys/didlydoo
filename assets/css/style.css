@@ -211,6 +211,9 @@ main table tr .td--name {
 main table tr .td--date {
   font-weight: bold;
 }
+main table .btnAddPerson {
+  background-color: rgba(124, 19, 181, 0.593);
+}
 
 :root {
   --colorH1: linear-gradient(100deg, rgba(8,36,79,1) 0%, rgba(125,19,181,1) 57%);
@@ -232,6 +235,63 @@ footer ul {
 }
 footer ul li {
   margin: 5px;
+}
+
+:root {
+  --backgroundCard: #f1f3f5;
+  --borderColor: #333;
+  --backgroundImg: url("/assets/img/background.jpg");
+  --color: #333 ;
+}
+
+#form--formulaire {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 20px;
+  padding: 5px;
+  font-size: 14px;
+  width: 90%;
+  border: 1px solid var(--borderColor);
+  background-color: var(--backgroundCard);
+  border-radius: 15px;
+}
+#form--formulaire label {
+  margin-top: 5px;
+}
+#form--formulaire label span {
+  font-weight: bold;
+}
+#form--formulaire #submit {
+  align-self: center;
+  margin-top: 5px;
+  padding: 5px;
+  border-radius: 20px;
+  border: 1px solid #333;
+  background-color: rgba(124, 19, 181, 0.593);
+}
+
+#form--popup {
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--borderColor);
+  background-color: var(--backgroundCard);
+  width: 50%;
+  margin-bottom: 20px;
+  padding: 5px;
+  border-radius: 15px;
+}
+#form--popup div {
+  display: flex;
+  justify-content: center;
+}
+#form--popup div button {
+  margin: 5px;
+  width: 40px;
+  text-align: center;
+  background-color: rgba(124, 19, 181, 0.593);
+  border-radius: 20px;
+  border: 1px solid #333;
 }
 
 *, ::after, ::before {
