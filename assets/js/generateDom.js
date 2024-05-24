@@ -135,11 +135,17 @@ export function generateDom(event) {
     generateElement("p", event.description, mainEvent);
     generateElement("p", event.author, mainEvent, "author");
     const deleteBtn = generateElement("span", "delete", mainEvent, "material-symbols-outlined");
+    const editBtn = generateElement("span", "edit", mainEvent, "material-symbols-outlined");
 
     deleteBtn.addEventListener("click", () => {
         eventSection.remove();
         deleteEvents(event.id);
     });
+
+    editBtn.addEventListener("click", () => {
+console.log("dylan modifie moi stp !")
+
+    })
     
     const eventTableSection = createDiv(eventSection, "event__table");
     const table = generateTable(eventTableSection);

@@ -150,6 +150,9 @@ main .main__event .material-symbols-outlined {
   right: 5%;
   top: 15%;
 }
+main .main__event .material-symbols-outlined:nth-child(4) {
+  right: 1%;
+}
 main .main__event::before {
   content: "";
   position: absolute;
@@ -343,4 +346,4 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+}/*# sourceMappingURL=style.css.map */
