@@ -5,6 +5,11 @@
     --borderColor : #333
 }
 
+@mixin responsive($width) {
+    @media only screen and (min-width: $width) {
+        @content;
+    }
+}
 
 header{
     display: flex;
@@ -20,6 +25,10 @@ header{
     overflow: hidden;
     background-color: var(--backgroundCard);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    @include responsive(768px){
+        width: 50%;
+    }
+
     div{
         width: 75%;
         display: flex;

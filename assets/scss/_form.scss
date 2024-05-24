@@ -6,6 +6,12 @@
     --color : #333
 }
 
+@mixin responsive($width) {
+    @media only screen and (min-width: $width) {
+        @content;
+    }
+}
+
 #form--formulaire{
     display: none;
     flex-direction: column;
@@ -17,6 +23,10 @@
     border: 1px solid var(--borderColor);
     background-color: var(--backgroundCard);
     border-radius: 15px;
+    @include responsive(768px){
+        width: 50%;
+        align-self: center;
+    }
     label{
         margin-top: 5px;
         span{

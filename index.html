@@ -23,28 +23,26 @@
             <input type="checkbox" class="checkbox" checked><!--darkMode-->
         </div>
     </header>
+    
+    <div id="form--formulaire">
+        <label for="name"><span>Nom</span> de l'évènement :</label>
+        <input type="text" id="name" placeholder="Nom de l'évènement" maxlength="256">
+        <label for="description"><span>Description</span> de l'évènement :</label>
+        <input type="text" id="description" maxlength="256" placeholder="Description de l'évènement">
+        <label for="date"><span>Dates</span> possibles :</label>
+        <input type="date" name="date" id="date">
+        <label for="author"><span>Auteur</span> de l'évènement :</label>
+        <input type="text" id="author" placeholder="L'auteur de l'évènement">
+        <button id="btnAddDate">Ajouter une date</button>
+        <button id="submit">Soumettre</button>
+    </div>
     <main>
 
-        <div id="form--formulaire">
-            <label for="name"><span>Nom</span> de l'évènement :</label>
-            <input type="text" id="name" placeholder="Nom de l'évènement" maxlength="256">
-            <label for="description"><span>Description</span> de l'évènement :</label>
-            <input type="text" id="description" maxlength="256" placeholder="Description de l'évènement">
-            <label for="date"><span>Dates</span> possibles :</label>
-            <input type="date" name="date" id="date">
-            <label for="author"><span>Auteur</span> de l'évènement :</label>
-            <input type="text" id="author" placeholder="L'auteur de l'évènement">
-            <button id="btnAddDate">Ajouter une date</button>
-            <button id="submit">Soumettre</button>
+        
+        <div id="addDate__popup">
+            <p>Vous avez bien ajouté une date à votre évènement !</p>
+            <audio src="/assets/son/livechat-129007.mp3" id="player"></audio>
         </div>
-        <!-- <div style="display: none;" id="form--popup">
-            <p>Are you sure ?</p>
-            <div>
-                <button id="form--popup--yes">Yes</button>
-                <button id="form--popup--no">No</button>
-            </div>
-        </div> -->
-        <!-- Contenu généré en JS-->
     </main>
     <footer>
         <p>Collaborators</p>
@@ -61,6 +59,7 @@
     <script type="module" src="assets/js/generateDom.js"></script>
     <!-- <script type="module" src="assets/js/generateAttendees.js"></script> -->
     <script type="module" src="assets/js/deleteEvent.js"></script>
+    <script type="module" src="assets/js/popup.js"></script>
 </body>
 
 </html>

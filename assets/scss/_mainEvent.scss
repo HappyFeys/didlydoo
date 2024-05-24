@@ -7,10 +7,20 @@
     --color : #333
 }
 
+@mixin responsive($width) {
+    @media only screen and (min-width: $width) {
+        @content;
+    }
+}
+
 main{
-    width: 100%;
+    
     .event{
         width: 100%;
+        @include responsive(768px){
+            width: 350px;
+            margin: 0 10px;
+        }
     }
     .main__event{
         width:95%;
@@ -29,6 +39,10 @@ main{
         margin-top: 20px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         color: var(--color);
+        @include responsive(768px){
+            width: 100%;
+            height: 250px;
+        }
         h2{
             font-size: 20px;
             margin-bottom: 5px;
@@ -43,11 +57,11 @@ main{
         }
         .material-symbols-outlined{
             position: absolute;
-            right: 5%;
+            right: 15px;
             top: 15%;
 
             &:nth-child(4) {
-                right: 1%;
+                right: 45px;
             }
         }
     }
@@ -59,5 +73,31 @@ main{
     height: 15px; 
     width: 100%;
     background: var(--colorH1);
+    }
+
+    #addDate__popup{
+        display: none;
+        position: fixed;
+        bottom: 5px;
+        right: 5px;
+        z-index: 1;
+        width: 225px;
+        height: auto;
+        border: 1px solid #333;
+        background-color: var(--backgroundCard);
+        padding: 10px;
+        border-radius: 15px;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    #addDate__popup::before{
+        content: "";
+        position: absolute;
+        top: -5px; 
+        left: 0;
+        height: 10px; 
+        width: 100%;
+        background: var(--colorH1);
     }
 }

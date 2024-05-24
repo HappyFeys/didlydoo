@@ -7,6 +7,12 @@
     --backgroundTdNo : #dc3545;
 }
 
+@mixin responsive($width) {
+    @media only screen and (min-width: $width) {
+        @content;
+    }
+}
+
 main{
     .event{
         display: flex;
@@ -22,6 +28,9 @@ main{
         padding: 20px;
         background-color: var(--backgroundCard);
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        @include responsive(768px){
+            width: 100%;
+        }
     }
     table{
         width: 100%;
@@ -31,7 +40,8 @@ main{
             td{
                 border-radius: 5px;
                 span{
-                    color: #333;              }
+                    color: #333;
+                }
                 input{
                     width: 50px;
                     border-radius: 5px;
