@@ -1,32 +1,5 @@
 [
   {
-    "id": "656840692ca2",
-    "name": "On va s'amuser",
-    "author": "Dylan",
-    "description": "Il va falloir résoudre quelques bugs",
-    "dates": [
-      "2024-05-24"
-    ],
-    "created_at": "2024-05-24T09:58:12.496Z",
-    "num_modification": 0,
-    "last_modification": "2024-05-24T09:58:12.496Z",
-    "attendees": []
-  },
-  {
-    "id": "b82e7942bca3",
-    "name": "Faire du VTT",
-    "author": "Dylan",
-    "description": "Faire une rando de 40km",
-    "dates": [
-      "2024-05-24",
-      "2024-05-26"
-    ],
-    "created_at": "2024-05-24T09:23:52.748Z",
-    "num_modification": 0,
-    "last_modification": "2024-05-24T09:23:52.748Z",
-    "attendees": []
-  },
-  {
     "id": "f5b6564b5dc4",
     "name": "My sweet 16",
     "description": "I am going to be 16, let us all party together! Help me pick a date so we can go together",

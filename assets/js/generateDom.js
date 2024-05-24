@@ -1,5 +1,5 @@
 import { generateElement, createDiv, resetHTML } from "./generateElement.js";
-import { Get, Set } from "./LocalStorage.js";
+
 import { postEvent } from "./postEvent.js";
 import { getEvents } from "./getEvent.js";
 import { deleteEvents } from "./deleteEvent.js";
@@ -143,12 +143,12 @@ export function generateDom(event) {
     });
 
     editBtn.addEventListener("click", () => {
-console.log("dylan modifie moi stp !")
 
     })
     
     const eventTableSection = createDiv(eventSection, "event__table");
     const table = generateTable(eventTableSection);
+    table.classList.add("test-"+event.id)
     
     const eventTableDate = generateTr(table, "event__table--date");
     generateTdNoContent(eventTableDate);
@@ -159,7 +159,7 @@ console.log("dylan modifie moi stp !")
         generateTd(newDateFormat, eventTableDate, "td--date");
     }
 
-    const eventTableAdd = generateTr(table, "event__table--add");
+    const eventTableAdd = generateTr(table, "event__table--add-"+event.id);
     const addNameInput = generateTdinput(eventTableAdd, "text", "table--addName");
     const isHereCheckboxes = [];
     for (const element of event.dates) {
@@ -170,12 +170,29 @@ console.log("dylan modifie moi stp !")
     const TrAddPerson = generateTr(table, "addPerson");
     const tdBtn = generateTdNoContent(TrAddPerson, "tdBtn");
     const btnAddPerson = generateElement("button", "OK", tdBtn, "btnAddPerson");
+   
+    let organizedData = {};
+
+    for (const element of event.dates) {
+        
+        for (const iterator of element.attendees) {
+            
+            if (!organizedData[element.date]) {
+                organizedData[element.date] = [];
+            }
+            
+            organizedData[element.date].push({ name: iterator.name, available: iterator.available });
+        }
+    }
+
+    console.log(organizedData);
     
+    displayData(organizedData,event.id)
+
     btnAddPerson.addEventListener("click", () => {
         let newPerson = {
             name: addNameInput.value
         };
-        console.log(addNameInput.value);
         let newRow = document.createElement("tr");
         newRow.classList.add("event__table--person");
 
@@ -187,9 +204,53 @@ console.log("dylan modifie moi stp !")
 
         table.insertBefore(newRow, eventTableAdd);
         
+
         addNameInput.value = ""
         for (const element of isHereCheckboxes) {
             element.checked= false
         }
+    });
+}
+
+function displayData(organizedData,test) {
+    const table = document.querySelector(".test-"+test); 
+    const eventTableAdd = document.querySelector(".event__table--add-"+test); 
+    const dates = Object.keys(organizedData);
+
+    let names = new Set();
+    for (const date in organizedData) {
+        organizedData[date].forEach(attendee => names.add(attendee.name));
+    }
+    names = Array.from(names);
+
+    names.forEach(name => {
+        let newRow = document.createElement("tr");
+        newRow.classList.add("event__table--person");
+
+        generateTd(name, newRow, "td--name");
+
+        dates.forEach(date => {
+            const attendee = organizedData[date].find(attendee => attendee.name === name);
+            const availability = attendee ? (attendee.available !== null ? (attendee.available ? "yes" : "no") : "unknown") : "no info";
+            
+            generateTd(availability, newRow, "td--availability");
+            setTimeout(() => {
+                let elements = document.querySelectorAll(".td--availability");
+                elements.forEach(td => {
+                    if (td.innerText === "yes") {
+                        td.classList.add("yes");
+                        td.style.color="transparent"
+                    } else if (td.innerText === "no") {
+                        td.classList.add("no");
+                        td.style.color="transparent"
+                    } else {
+                        td.classList.add("unknow");
+                        td.style.color="transparent"
+                    }
+                });
+            }, 0);
+        });
+
+        table.insertBefore(newRow, eventTableAdd);
     });
 }

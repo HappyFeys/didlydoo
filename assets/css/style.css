@@ -261,6 +261,9 @@ main table tr .no {
   background-color: var(--backgroundTdNo);
   color: #fff;
 }
+main table tr .unknow {
+  background-color: yellow;
+}
 main table tr .td--name {
   font-weight: bold;
 }
