@@ -1,5 +1,5 @@
 export async function getEvents() {
-  const url = "http://localhost:3000/api/events/";
+  const url = `http://localhost:3000/api/events/`;
 
   try {
       const response = await fetch(url);

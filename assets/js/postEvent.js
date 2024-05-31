@@ -1,4 +1,4 @@
-export async function postEvent (eventName, dateTab , author , description){
+export async function postEvent (eventName, dateTab , author , description, attendees){
 
   const url = "http://localhost:3000/api/events/"
 
@@ -6,7 +6,8 @@ export async function postEvent (eventName, dateTab , author , description){
     name: eventName,
     dates: dateTab,
     author: author,
-    description: description
+    description: description,
+    attendees: attendees
   }
 
   const body = JSON.stringify(data)
