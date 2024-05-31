@@ -22,7 +22,7 @@ En tant que projet final, celui-ci nous oblige à travailler toutes les bases ap
 
 ## Language utilisé
 
-[![My Skills](https://skillicons.dev/icons?i=js,html,css,sass,nodejs)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=js,html,css,sass,nodejs,postman)](https://skillicons.dev)
 
 ## Apercu
 
